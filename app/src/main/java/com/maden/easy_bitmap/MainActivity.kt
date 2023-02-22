@@ -1,5 +1,6 @@
 package com.maden.easy_bitmap
 
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
@@ -24,13 +25,12 @@ class MainActivity : AppCompatActivity() {
         viewModel.bitmapSaveFile(file = file, bitmap = bitmap)
         viewModel.bitmapSaveFromFileName(bitmap = bitmap, context = this)
 
-        //to Bitmap
         val fileToBitmap = viewModel.fileToBitmap(file = file)
         val fileNameToBitmap = viewModel.fileNameToBitmap(fileName = file.absolutePath)
-
-        //from bitmap
         val base64 = viewModel.bitmapToBase64(bitmap = bitmap)
         val byteArray = viewModel.bitmapToByteArray(bitmap = bitmap)
+        val base64ToBitmap = viewModel.base64ToBitmap(base64 = base64)
+        val bitmapChangeType = viewModel.bitmapChangeType(bitmap = bitmap, format = Bitmap.CompressFormat.JPEG)
     }
 
 }

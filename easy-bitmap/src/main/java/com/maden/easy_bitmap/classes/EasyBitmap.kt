@@ -3,6 +3,7 @@ package com.maden.easy_bitmap.classes
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.media.Image
 import com.maden.easy_bitmap.utils.extensions.*
 import com.maden.easy_bitmap.utils.extensions.toBase64
 import com.maden.easy_bitmap.utils.extensions.toBitmap
@@ -119,5 +120,10 @@ class EasyBitmap {
         format: Bitmap.CompressFormat = Bitmap.CompressFormat.JPEG,
         quality: Int = 100,
     ): Bitmap? = bitmap.changeType(format = format, quality = quality)
+
+    /**
+     * @param image must be image.format = ImageFormat.YUV_420_888
+     */
+    fun imageToByteArray(image: Image): ByteArray? = image.toByteArray()
 
 }
