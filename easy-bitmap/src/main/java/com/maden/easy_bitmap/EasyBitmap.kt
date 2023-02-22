@@ -1,4 +1,4 @@
-package com.maden.easy_bitmap.classes
+package com.maden.easy_bitmap
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -136,7 +136,6 @@ class EasyBitmap {
     fun bitmapCenterCrop(bitmap: Bitmap, scaleFactor: Double = 0.0) = bitmap.centerCrop(scaleFactor = scaleFactor)
 
     fun bitmapZoom(bitmap: Bitmap, scaleFactor: Double = 0.75) = bitmap.zoom(scaleFactor = scaleFactor)
-
 
     fun rectCropBitmap(bitmap: Bitmap, rect: Rect) = bitmap.rectCropBitmap(rect = rect)
 }

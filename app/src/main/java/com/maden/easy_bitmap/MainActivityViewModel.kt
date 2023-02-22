@@ -7,8 +7,6 @@ import android.media.Image
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
-import com.maden.easy_bitmap.classes.EasyBitmap
-import com.maden.easy_bitmap.utils.extensions.rectCropBitmap
 import java.io.File
 
 class MainActivityViewModel : ViewModel() {
