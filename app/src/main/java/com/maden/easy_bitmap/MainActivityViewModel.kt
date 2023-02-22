@@ -2,6 +2,8 @@ package com.maden.easy_bitmap
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.media.Image
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import com.maden.easy_bitmap.classes.EasyBitmap
@@ -65,5 +67,10 @@ class MainActivityViewModel : ViewModel() {
         format: Bitmap.CompressFormat = Bitmap.CompressFormat.JPEG,
         quality: Int = 100,
     ) = easyBitmap.bitmapChangeType(bitmap = bitmap, format = format, quality = quality)
+
+    fun imageToByteArray(image: Image) = easyBitmap.imageToByteArray(image = image)
+
+    fun imageViewToBitmap(imageView: ImageView) = easyBitmap.imageViewToBitmap(imageView = imageView)
+
 
 }

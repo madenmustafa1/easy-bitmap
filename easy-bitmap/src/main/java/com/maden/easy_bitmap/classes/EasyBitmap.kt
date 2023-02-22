@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.media.Image
+import android.widget.ImageView
 import com.maden.easy_bitmap.utils.extensions.*
 import com.maden.easy_bitmap.utils.extensions.toBase64
 import com.maden.easy_bitmap.utils.extensions.toBitmap
@@ -125,5 +126,7 @@ class EasyBitmap {
      * @param image must be image.format = ImageFormat.YUV_420_888
      */
     fun imageToByteArray(image: Image): ByteArray? = image.toByteArray()
+
+    fun imageViewToBitmap(imageView: ImageView): Bitmap? = imageView.toBitmap()
 
 }

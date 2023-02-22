@@ -2,9 +2,8 @@ package com.maden.easy_bitmap.utils.exceptions
 
 import android.graphics.ImageFormat
 import android.media.Image
-import com.maden.easy_bitmap.utils.extensions.toByteArray
 
-object Assertion {
+internal object Assertion {
 
     fun quality(data: Int) {
         assert(data in 1..100) { "Quality: '$data' not valid! Must be between 1 and 100" }

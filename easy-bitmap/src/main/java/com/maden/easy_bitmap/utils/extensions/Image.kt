@@ -4,7 +4,7 @@ import android.media.Image
 import com.maden.easy_bitmap.utils.exceptions.Assertion
 import java.nio.ByteBuffer
 
-fun Image.toByteArray(): ByteArray? {
+internal fun Image.toByteArray(): ByteArray? {
     Assertion.imageFormat(image = this)
     try {
         val width = this.width
