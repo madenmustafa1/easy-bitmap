@@ -111,4 +111,13 @@ class EasyBitmap {
      */
     fun base64ToBitmap(base64: String) = base64.toBitmap()
 
+    /**
+     * @param quality 1 and 100 must be between.
+     */
+    fun bitmapChangeType(
+        bitmap: Bitmap,
+        format: Bitmap.CompressFormat = Bitmap.CompressFormat.JPEG,
+        quality: Int = 100,
+    ): Bitmap? = bitmap.changeType(format = format, quality = quality)
+
 }

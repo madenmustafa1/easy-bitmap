@@ -60,4 +60,10 @@ class MainActivityViewModel : ViewModel() {
 
     fun base64ToBitmap(base64: String) = easyBitmap.base64ToBitmap(base64)
 
+    fun bitmapChangeType(
+        bitmap: Bitmap,
+        format: Bitmap.CompressFormat = Bitmap.CompressFormat.JPEG,
+        quality: Int = 100,
+    ) = easyBitmap.bitmapChangeType(bitmap = bitmap, format = format, quality = quality)
+
 }
