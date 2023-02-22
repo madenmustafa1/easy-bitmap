@@ -127,6 +127,12 @@ class EasyBitmap {
      */
     fun imageToByteArray(image: Image): ByteArray? = image.toByteArray()
 
-    fun imageViewToBitmap(imageView: ImageView): Bitmap? = imageView.toBitmap()
+    fun imageViewToBitmap(imageView: ImageView) = imageView.toBitmap()
 
+    /**
+     * @param bitmap height and width must be greater than 0
+     */
+    fun bitmapCenterCrop(bitmap: Bitmap, scaleFactor: Double = 0.0) = bitmap.centerCrop(scaleFactor = scaleFactor)
+
+    fun bitmapZoom(bitmap: Bitmap, scaleFactor: Double = 0.75) = bitmap.zoom(scaleFactor = scaleFactor)
 }

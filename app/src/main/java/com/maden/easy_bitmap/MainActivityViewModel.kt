@@ -37,9 +37,6 @@ class MainActivityViewModel : ViewModel() {
         )
     }
 
-    /**
-     * from bitmap
-     */
     fun fileToBitmap(file: File) = easyBitmap.fileToBitmap(file)
 
     fun fileNameToBitmap(fileName: String) = easyBitmap.fileNameToBitmap(fileName)
@@ -56,10 +53,6 @@ class MainActivityViewModel : ViewModel() {
         quality: Int = 100,
     ) = easyBitmap.bitmapToByteArray(bitmap = bitmap, format = format, quality = quality)
 
-    /**
-     * to Bitmap
-     */
-
     fun base64ToBitmap(base64: String) = easyBitmap.base64ToBitmap(base64)
 
     fun bitmapChangeType(
@@ -70,7 +63,18 @@ class MainActivityViewModel : ViewModel() {
 
     fun imageToByteArray(image: Image) = easyBitmap.imageToByteArray(image = image)
 
-    fun imageViewToBitmap(imageView: ImageView) = easyBitmap.imageViewToBitmap(imageView = imageView)
+    fun imageViewToBitmap(imageView: ImageView) =
+        easyBitmap.imageViewToBitmap(imageView = imageView)
+
+    fun bitmapCenterCrop(
+        bitmap: Bitmap,
+        scaleFactor: Double = 0.0
+    ) = easyBitmap.bitmapCenterCrop(bitmap = bitmap, scaleFactor = scaleFactor)
+
+    fun bitmapZoom(
+        bitmap: Bitmap,
+        scaleFactor: Double = 0.75
+    ) = easyBitmap.bitmapZoom(bitmap = bitmap, scaleFactor = scaleFactor)
 
 
 }

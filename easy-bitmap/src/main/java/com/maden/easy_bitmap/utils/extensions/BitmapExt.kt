@@ -43,3 +43,51 @@ internal fun Bitmap.changeType(
         null
     }
 }
+
+internal fun Bitmap.centerCrop(scaleFactor: Double = 0.0): Bitmap? {
+    try {
+        var bitmap: Bitmap? = null
+        if (this.width >= this.height) {
+             bitmap =  Bitmap.createBitmap(
+                this,
+                this.width / 2 - this.height / 2,
+                0,
+                this.height,
+                this.height
+            )
+
+        } else {
+            bitmap = Bitmap.createBitmap(
+                this,
+                0,
+                this.height / 2 - this.width / 2,
+                this.width,
+                this.width
+            )
+        }
+        return if (scaleFactor > 0) bitmap.zoom()
+        else bitmap
+    } catch (e: Exception) {
+        return null
+    }
+}
+
+internal fun Bitmap.zoom(scaleFactor: Double = 0.75): Bitmap? {
+    return try {
+        val widthOffset = ((1 - scaleFactor) / 2 * this.width).toInt()
+        val heightOffset = ((1 - scaleFactor) / 2 * this.height).toInt()
+        val numWidthPixels: Int = this.width - 2 * widthOffset
+        val numHeightPixels: Int = this.height - 2 * heightOffset
+        Bitmap.createBitmap(
+            this,
+            widthOffset,
+            heightOffset,
+            numWidthPixels,
+            numHeightPixels,
+            null,
+            true
+        )
+    } catch (e: Exception) {
+        null
+    }
+}
