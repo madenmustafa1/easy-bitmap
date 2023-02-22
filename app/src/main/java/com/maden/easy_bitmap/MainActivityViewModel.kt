@@ -2,11 +2,13 @@ package com.maden.easy_bitmap
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Rect
 import android.media.Image
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import com.maden.easy_bitmap.classes.EasyBitmap
+import com.maden.easy_bitmap.utils.extensions.rectCropBitmap
 import java.io.File
 
 class MainActivityViewModel : ViewModel() {
@@ -76,5 +78,7 @@ class MainActivityViewModel : ViewModel() {
         scaleFactor: Double = 0.75
     ) = easyBitmap.bitmapZoom(bitmap = bitmap, scaleFactor = scaleFactor)
 
+    fun rectCenterCrop(bitmap: Bitmap, rect: Rect) =
+        easyBitmap.rectCropBitmap(bitmap = bitmap, rect = rect)
 
 }

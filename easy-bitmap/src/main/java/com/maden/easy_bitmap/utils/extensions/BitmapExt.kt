@@ -1,7 +1,6 @@
 package com.maden.easy_bitmap.utils.extensions
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.graphics.*
 import android.util.Base64
 import com.maden.easy_bitmap.utils.exceptions.Assertion
 import java.io.ByteArrayOutputStream
@@ -46,9 +45,9 @@ internal fun Bitmap.changeType(
 
 internal fun Bitmap.centerCrop(scaleFactor: Double = 0.0): Bitmap? {
     try {
-        var bitmap: Bitmap? = null
+        val bitmap: Bitmap?
         if (this.width >= this.height) {
-             bitmap =  Bitmap.createBitmap(
+            bitmap = Bitmap.createBitmap(
                 this,
                 this.width / 2 - this.height / 2,
                 0,
@@ -91,3 +90,23 @@ internal fun Bitmap.zoom(scaleFactor: Double = 0.75): Bitmap? {
         null
     }
 }
+
+internal fun Bitmap.rectCropBitmap(rect: Rect): Bitmap? {
+    val resultBitmap = Bitmap.createBitmap(
+        rect.width(), rect.height(),
+        Bitmap.Config.ARGB_8888
+    )
+
+    val canvas = Canvas(resultBitmap)
+    val paint = Paint(Paint.FILTER_BITMAP_FLAG)
+    paint.color = Color.WHITE
+    canvas.drawRect(
+        Rect(0, 0, rect.width(), rect.height()),
+        paint
+    )
+    val matrix = Matrix()
+    matrix.postTranslate(-rect.left.toFloat(), -rect.top.toFloat())
+    canvas.drawBitmap(this, matrix, paint)
+    return resultBitmap
+}
+

@@ -1,6 +1,7 @@
 package com.maden.easy_bitmap
 
 import android.graphics.Bitmap
+import android.graphics.Rect
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
@@ -31,12 +32,14 @@ class MainActivity : AppCompatActivity() {
         val base64 = viewModel.bitmapToBase64(bitmap = bitmap)
         val byteArray = viewModel.bitmapToByteArray(bitmap = bitmap)
         val base64ToBitmap = viewModel.base64ToBitmap(base64 = base64)
-        val bitmapChangeType = viewModel.bitmapChangeType(bitmap = bitmap, format = Bitmap.CompressFormat.JPEG)
-
-        val centerCrop = viewModel.bitmapCenterCrop(bitmap = bitmap)
+        val bitmapChangeType =
+            viewModel.bitmapChangeType(bitmap = bitmap, format = Bitmap.CompressFormat.JPEG)
+        val bitmapCenterCrop = viewModel.bitmapCenterCrop(bitmap = bitmap)
         val bitmapZoom = viewModel.bitmapZoom(bitmap = bitmap, scaleFactor = .1)
 
-        this.findViewById<ImageView>(R.id.imageView).setImageBitmap(bitmapZoom)
+        val rectCropBitmap = viewModel.rectCenterCrop(bitmap = bitmap, rect = Rect(300, 300, 800, 800))
+
+        this.findViewById<ImageView>(R.id.imageView).setImageBitmap(rectCropBitmap)
     }
 
 }
