@@ -7,6 +7,9 @@ import android.os.Bundle
 import android.os.Environment
 import android.widget.ImageView
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
@@ -18,15 +21,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val bitmap = viewModel.tempBitmap(this) ?: return
-
-        val file = File(
-            this.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
-                .toString() + "/bitmap_bitmap_${System.currentTimeMillis()}.png"
-        )
+        val file = viewModel.tempFile(this)
 
         viewModel.bitmapSaveFile(file = file, bitmap = bitmap)
         viewModel.bitmapSaveFromFileName(bitmap = bitmap, context = this)
-
         val fileToBitmap = viewModel.fileToBitmap(file = file)
         val fileNameToBitmap = viewModel.fileNameToBitmap(fileName = file.absolutePath)
         val base64 = viewModel.bitmapToBase64(bitmap = bitmap)
@@ -36,10 +34,15 @@ class MainActivity : AppCompatActivity() {
             viewModel.bitmapChangeType(bitmap = bitmap, format = Bitmap.CompressFormat.JPEG)
         val bitmapCenterCrop = viewModel.bitmapCenterCrop(bitmap = bitmap)
         val bitmapZoom = viewModel.bitmapZoom(bitmap = bitmap, scaleFactor = .1)
+        val rectCropBitmap =
+            viewModel.rectCenterCrop(bitmap = bitmap, rect = Rect(300, 300, 800, 800))
 
-        val rectCropBitmap = viewModel.rectCenterCrop(bitmap = bitmap, rect = Rect(300, 300, 800, 800))
+        lifecycleScope.launch {
+            viewModel.detectFaces(bitmap = bitmap).collect {
 
-        this.findViewById<ImageView>(R.id.imageView).setImageBitmap(rectCropBitmap)
+            }
+        }
+        //this@MainActivity.findViewById<ImageView>(R.id.imageView).setImageBitmap()
     }
 
 }

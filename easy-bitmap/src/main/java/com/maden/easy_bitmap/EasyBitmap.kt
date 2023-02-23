@@ -139,7 +139,4 @@ class EasyBitmap {
 
     fun rectCropBitmap(bitmap: Bitmap, rect: Rect) = bitmap.rectCropBitmap(rect = rect)
 
-    fun detectFace(bitmap: Bitmap) = Unit
-
-    fun ocr(bitmap: Bitmap) = Unit
 }

@@ -4,19 +4,30 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Rect
 import android.media.Image
+import android.os.Environment
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
+import com.maden.easy_bitmap_ai.EasyBitmapAI
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.channelFlow
+import kotlinx.coroutines.launch
 import java.io.File
 
 class MainActivityViewModel : ViewModel() {
 
     private val easyBitmap = EasyBitmap()
+    private val easyBitmapAI = EasyBitmapAI()
 
     fun tempBitmap(context: Context): Bitmap? {
         val drawable = ContextCompat.getDrawable(context, R.drawable.monkey) ?: return null
         return easyBitmap.drawableToBitmap(drawable)
     }
+
+    fun tempFile(context: Context) =  File(
+        context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+            .toString() + "/bitmap_bitmap_${System.currentTimeMillis()}.png"
+    )
 
     fun bitmapSaveFile(bitmap: Bitmap, file: File) {
         easyBitmap.saveBitmapFromFile(
@@ -79,4 +90,14 @@ class MainActivityViewModel : ViewModel() {
     fun rectCenterCrop(bitmap: Bitmap, rect: Rect) =
         easyBitmap.rectCropBitmap(bitmap = bitmap, rect = rect)
 
+
+    fun detectFaces(bitmap: Bitmap) = channelFlow {
+        easyBitmapAI.detectFaces(bitmap = bitmap) {
+            launch {
+                send(it)
+                close()
+            }
+        }
+        awaitClose()
+    }
 }
