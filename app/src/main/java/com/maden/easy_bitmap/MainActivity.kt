@@ -8,6 +8,9 @@ import android.os.Environment
 import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.io.File
@@ -20,7 +23,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val bitmap = viewModel.tempBitmap(this) ?: return
+        val bitmap = viewModel.tempBitmap(this, R.drawable.monkey) ?: return
+        val textBitmap = viewModel.tempBitmap(this, R.drawable.text) ?: return
         val file = viewModel.tempFile(this)
 
         viewModel.bitmapSaveFile(file = file, bitmap = bitmap)
@@ -41,8 +45,10 @@ class MainActivity : AppCompatActivity() {
             viewModel.detectFaces(bitmap = bitmap).collect {
 
             }
-        }
-        //this@MainActivity.findViewById<ImageView>(R.id.imageView).setImageBitmap()
-    }
 
+            viewModel.ocrBitmap(textBitmap) {
+
+            }
+        }
+    }
 }

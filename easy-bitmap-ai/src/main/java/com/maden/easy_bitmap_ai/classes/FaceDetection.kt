@@ -10,15 +10,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-internal object FaceDetection {
+internal class FaceDetection {
 
-    private val faceDetectionOptions = FaceDetectorOptions.Builder()
+    private val faceDetectionOptions by lazy {
+        FaceDetectorOptions.Builder()
         .setPerformanceMode(FaceDetectorOptions.PERFORMANCE_MODE_FAST)
         .setContourMode(FaceDetectorOptions.LANDMARK_MODE_NONE)
         .setClassificationMode(FaceDetectorOptions.CLASSIFICATION_MODE_NONE)
         .build()
+    }
 
-    private val easyBitmap = EasyBitmap()
+    private val easyBitmap by lazy { EasyBitmap() }
 
     suspend fun detectFaces(bitmap: Bitmap, listener: suspend (result: ArrayList<Bitmap>) -> Unit) {
         val faceDetector = FaceDetection.getClient(faceDetectionOptions)

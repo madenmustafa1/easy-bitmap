@@ -1,20 +1,39 @@
 package com.maden.easy_bitmap_ai
 
+import android.content.Context
 import android.graphics.Bitmap
 import com.maden.easy_bitmap_ai.classes.FaceDetection
+import com.maden.easy_bitmap_ai.classes.Ocr
 
-class EasyBitmapAI {
+class EasyBitmapAI() {
+
+    private val faceDetection by lazy { FaceDetection() }
+    private val ocr by lazy { Ocr() }
 
     /**
-     * @param bitmap -> input your bitmap faces
+     * @param bitmap -> input bitmap faces
      * @param listener -> output faces list
      */
 
     suspend fun detectFaces(
         bitmap: Bitmap,
         listener: suspend (result: ArrayList<Bitmap>) -> Unit
-    ) = FaceDetection.detectFaces(bitmap = bitmap, listener = listener)
+    ) = faceDetection.detectFaces(
+        bitmap = bitmap,
+        listener = listener
+    )
 
-    fun ocr(bitmap: Bitmap) = Unit
+    /**
+     * @param bitmap -> input bitmap text
+     * @param listener -> output text
+     * @throws -> It will not work on devices without google play services.
+     */
+    fun ocr(
+        bitmap: Bitmap,
+        listener: (text: String) -> Unit
+    ) = ocr.ocrBitmap(
+        bitmap = bitmap,
+        listener = listener
+    )
 
 }

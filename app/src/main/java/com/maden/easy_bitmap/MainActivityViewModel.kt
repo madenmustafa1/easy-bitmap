@@ -3,9 +3,11 @@ package com.maden.easy_bitmap
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Rect
+import android.graphics.drawable.Drawable
 import android.media.Image
 import android.os.Environment
 import android.widget.ImageView
+import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import com.maden.easy_bitmap_ai.EasyBitmapAI
@@ -19,12 +21,12 @@ class MainActivityViewModel : ViewModel() {
     private val easyBitmap = EasyBitmap()
     private val easyBitmapAI = EasyBitmapAI()
 
-    fun tempBitmap(context: Context): Bitmap? {
-        val drawable = ContextCompat.getDrawable(context, R.drawable.monkey) ?: return null
+    fun tempBitmap(context: Context, @DrawableRes draw: Int): Bitmap? {
+        val drawable = ContextCompat.getDrawable(context, draw) ?: return null
         return easyBitmap.drawableToBitmap(drawable)
     }
 
-    fun tempFile(context: Context) =  File(
+    fun tempFile(context: Context) = File(
         context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
             .toString() + "/bitmap_bitmap_${System.currentTimeMillis()}.png"
     )
@@ -100,4 +102,10 @@ class MainActivityViewModel : ViewModel() {
         }
         awaitClose()
     }
+
+    fun ocrBitmap(
+        bitmap: Bitmap,
+        listener: (text: String) -> Unit
+    ) = easyBitmapAI.ocr(bitmap = bitmap, listener = listener)
+
 }
