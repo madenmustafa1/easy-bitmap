@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         val bitmapZoom = viewModel.bitmapZoom(bitmap = bitmap, scaleFactor = .1)
         val rectCropBitmap =
             viewModel.rectCenterCrop(bitmap = bitmap, rect = Rect(300, 300, 800, 800))
-
+        /*
         lifecycleScope.launch {
             viewModel.detectFaces(bitmap = bitmap).collect {
 
@@ -50,5 +50,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+
+         */
     }
 }

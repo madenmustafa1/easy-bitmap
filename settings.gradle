@@ -16,4 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "easy-bitmap"
 include ':app'
 include ':easy-bitmap'
-include ':easy-bitmap-ai'
+//include ':easy-bitmap-ai'

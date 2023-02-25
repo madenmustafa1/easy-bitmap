@@ -3,23 +3,18 @@ package com.maden.easy_bitmap
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Rect
-import android.graphics.drawable.Drawable
 import android.media.Image
 import android.os.Environment
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
-import com.maden.easy_bitmap_ai.EasyBitmapAI
-import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.channelFlow
-import kotlinx.coroutines.launch
 import java.io.File
 
 class MainActivityViewModel : ViewModel() {
 
     private val easyBitmap = EasyBitmap()
-    private val easyBitmapAI = EasyBitmapAI()
+    //private val easyBitmapAI = EasyBitmapAI()
 
     fun tempBitmap(context: Context, @DrawableRes draw: Int): Bitmap? {
         val drawable = ContextCompat.getDrawable(context, draw) ?: return null
@@ -92,7 +87,7 @@ class MainActivityViewModel : ViewModel() {
     fun rectCenterCrop(bitmap: Bitmap, rect: Rect) =
         easyBitmap.rectCropBitmap(bitmap = bitmap, rect = rect)
 
-
+    /*
     fun detectFaces(bitmap: Bitmap) = channelFlow {
         easyBitmapAI.detectFaces(bitmap = bitmap) {
             launch {
@@ -107,5 +102,7 @@ class MainActivityViewModel : ViewModel() {
         bitmap: Bitmap,
         listener: (text: String) -> Unit
     ) = easyBitmapAI.ocr(bitmap = bitmap, listener = listener)
+
+     */
 
 }
