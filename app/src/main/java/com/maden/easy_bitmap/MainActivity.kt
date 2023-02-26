@@ -4,19 +4,10 @@ import android.graphics.Bitmap
 import android.graphics.Rect
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
-import android.widget.ImageView
 import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
-import java.io.File
 
 class MainActivity : AppCompatActivity() {
-/*
+
     private val viewModel: MainActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +44,4 @@ class MainActivity : AppCompatActivity() {
 
          */
     }
-
- */
 }
