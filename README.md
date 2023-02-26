@@ -1,6 +1,6 @@
-#Easy Bitmap
+# Easy Bitmap
 
-###Project gradle
+### Project gradle
 
 ```kotlin
 	allprojects {
@@ -11,7 +11,7 @@
 	}
 ```
  or
- ###Settings gradle
+ ### Settings gradle
 ```kotlin
 dependencyResolutionManagement {
     repositories {
@@ -21,7 +21,7 @@ dependencyResolutionManagement {
 }
 ```
 
-###App gradle
+### App gradle
 	
     implementation 'com.github.madenmustafa1.easy-bitmap:easy-bitmap:1.0.4'
     implementation 'com.github.madenmustafa1.easy-bitmap:easy-bitmap-ai:1.0.4'
