@@ -9,6 +9,7 @@ import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
+/*
 import com.maden.easy_bitmap_ai.EasyBitmapAI
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.channelFlow
@@ -110,3 +111,5 @@ class MainActivityViewModel : ViewModel() {
 
 
 }
+
+ */

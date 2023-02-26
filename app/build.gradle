@@ -33,8 +33,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.madenmustafa1:easy-bitmap:1.0.0'
-    //implementation project(":easy-bitmap")
+    implementation project(":easy-bitmap")
     implementation project(":easy-bitmap-ai")
 
     implementation 'androidx.core:core-ktx:1.9.0'

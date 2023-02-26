@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
-
+/*
     private val viewModel: MainActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,4 +53,6 @@ class MainActivity : AppCompatActivity() {
 
          */
     }
+
+ */
 }
