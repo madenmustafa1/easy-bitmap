@@ -51,8 +51,8 @@ afterEvaluate {
                 from components.release
 
                 groupId = "com.github.madenmustafa"
-                artifactId = "maden-easy-bitmap-ai"
-                version = "1.0.0"
+                artifactId = "easy-bitmap-ai"
+                version = "1.0.4"
             }
         }
     }
