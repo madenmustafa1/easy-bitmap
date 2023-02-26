@@ -1,6 +1,5 @@
 package com.maden.easy_bitmap_ai
 
-import android.content.Context
 import android.graphics.Bitmap
 import com.maden.easy_bitmap_ai.classes.FaceDetection
 import com.maden.easy_bitmap_ai.classes.Ocr

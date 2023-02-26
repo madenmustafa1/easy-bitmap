@@ -3,6 +3,7 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+
         maven { url "https://jitpack.io" }
     }
 }
@@ -11,9 +12,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
+        maven { url "https://jitpack.io" }
     }
 }
 rootProject.name = "easy-bitmap"
 include ':app'
-include ':easy-bitmap'
-//include ':easy-bitmap-ai'
+//include ':easy-bitmap'
+include ':easy-bitmap-ai'
