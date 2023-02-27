@@ -1,5 +1,7 @@
 # Easy Bitmap
 
+[![](https://jitpack.io/v/madenmustafa1/easy-bitmap.svg)](https://jitpack.io/#madenmustafa1/easy-bitmap)
+
 ### Project gradle
 
 ```kotlin
@@ -23,7 +25,7 @@ dependencyResolutionManagement {
 
 ### App gradle
 	
-    implementation 'com.github.madenmustafa1.easy-bitmap:easy-bitmap:1.0.4'
-    implementation 'com.github.madenmustafa1.easy-bitmap:easy-bitmap-ai:1.0.4'
+    implementation 'com.github.madenmustafa1.easy-bitmap:easy-bitmap:version'
+    implementation 'com.github.madenmustafa1.easy-bitmap:easy-bitmap-ai:version'
 
 
