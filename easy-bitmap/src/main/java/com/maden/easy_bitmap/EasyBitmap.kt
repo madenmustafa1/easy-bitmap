@@ -6,6 +6,7 @@ import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.media.Image
 import android.widget.ImageView
+import com.maden.easy_bitmap.classes.http.DownloadService
 import com.maden.easy_bitmap.utils.extensions.*
 import com.maden.easy_bitmap.utils.extensions.toBase64
 import com.maden.easy_bitmap.utils.extensions.toBitmap
@@ -133,10 +134,48 @@ class EasyBitmap {
     /**
      * @param bitmap height and width must be greater than 0
      */
-    fun bitmapCenterCrop(bitmap: Bitmap, scaleFactor: Double = 0.0) = bitmap.centerCrop(scaleFactor = scaleFactor)
+    fun bitmapCenterCrop(bitmap: Bitmap, scaleFactor: Double = 0.0) =
+        bitmap.centerCrop(scaleFactor = scaleFactor)
 
-    fun bitmapZoom(bitmap: Bitmap, scaleFactor: Double = 0.75) = bitmap.zoom(scaleFactor = scaleFactor)
+    fun bitmapZoom(bitmap: Bitmap, scaleFactor: Double = 0.75) =
+        bitmap.zoom(scaleFactor = scaleFactor)
 
     fun rectCropBitmap(bitmap: Bitmap, rect: Rect) = bitmap.rectCropBitmap(rect = rect)
 
+    /**
+     * @param url -> Image URL
+     * @param exception -> Http exception
+     * @param headers -> Add Http header (like token)
+     * @param bitmap -> Http response
+     */
+    fun downloadImage(
+        url: String,
+        exception: (exception: Exception) -> Unit = { },
+        headers: Map<String, String>? = null,
+        bitmap: (bitmap: Bitmap?) -> Unit
+    ) = DownloadService.downloadImage(
+        url = url,
+        exception = exception,
+        bitmap = bitmap,
+        headers = headers
+    )
+
+    /**
+     * @param url -> Image URL
+     * @param filePath -> Image path
+     * @param context -> App context
+     * @throws @RequiresApi(api = 26)
+     */
+    /*
+    @RequiresApi(api = 26)
+    fun downloadImageWithWorker(
+        url: String,
+        filePath: String,
+        context: Context
+    ) = DownloadService.downloadImageWithWorker(
+        url = url,
+        filePath = filePath,
+        context = context,
+    )
+     */
 }

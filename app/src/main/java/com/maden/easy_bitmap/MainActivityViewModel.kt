@@ -91,6 +91,17 @@ class MainActivityViewModel : ViewModel() {
     fun rectCenterCrop(bitmap: Bitmap, rect: Rect) =
         easyBitmap.rectCropBitmap(bitmap = bitmap, rect = rect)
 
+    fun downloadImage(
+        url: String,
+        exception: (exception: Exception) -> Unit = { },
+        headers: Map<String, String>? = null,
+        bitmap: (bitmap: Bitmap?) -> Unit
+    ) = easyBitmap.downloadImage(
+        url = url,
+        exception = exception,
+        bitmap = bitmap,
+        headers = headers
+    )
 
     fun detectFaces(bitmap: Bitmap) = channelFlow {
         easyBitmapAI.detectFaces(bitmap = bitmap) {

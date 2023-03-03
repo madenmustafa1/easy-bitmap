@@ -2,9 +2,13 @@ package com.maden.easy_bitmap
 
 import android.graphics.Bitmap
 import android.graphics.Rect
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,17 +35,16 @@ class MainActivity : AppCompatActivity() {
         val bitmapZoom = viewModel.bitmapZoom(bitmap = bitmap, scaleFactor = .1)
         val rectCropBitmap =
             viewModel.rectCenterCrop(bitmap = bitmap, rect = Rect(300, 300, 800, 800))
-        /*
+
+        viewModel.downloadImage(url = "URL") {
+        }
+
         lifecycleScope.launch {
             viewModel.detectFaces(bitmap = bitmap).collect {
-
             }
 
             viewModel.ocrBitmap(textBitmap) {
-
             }
         }
-
-         */
     }
 }
